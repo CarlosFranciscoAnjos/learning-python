@@ -1,0 +1,47 @@
+# Docker compose file used to instantiate databases(s)
+
+services:
+  postgres:
+    image: postgres:alpine3.16
+    container_name: postgres-1
+    ports:
+      - "5432:5432"
+    networks:
+      - learning-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: investment-sim-v1
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 1m
+      timeout: 10s
+      retries: 2
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:6.13
+  #   container_name: pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
+  #   ports:
+  #     - "5480:80"
+  #   networks:
+  #     - learning-network
+  #   volumes:
+  #     - pgadmin-data:/var/lib/pgadmin
+  #   depends_on:
+  #     - postgres
+
+networks:
+  learning-network:
+
+volumes:
+  postgres-data:
+    driver: local
+  pgadmin-data:
+    driver: local

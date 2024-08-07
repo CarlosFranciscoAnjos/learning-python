@@ -1,7 +1,7 @@
 """
 > Exercise 1
 
-Create an application that receives two numbers from the user and multiplies them.
+Create a program that receives two numbers from the user and multiplies them.
 Use the provided functions.
 """
 

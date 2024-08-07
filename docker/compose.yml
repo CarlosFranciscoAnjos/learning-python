@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: investment-sim-v1
+      POSTGRES_DB: demo-db
       PGDATA: /var/lib/postgresql/data/pgdata
     healthcheck:
       test: pg_isready -U postgres

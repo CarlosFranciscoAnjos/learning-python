@@ -14,4 +14,4 @@ def ReverseAndPrint(string):
     pass
 
 
-ReverseAndPrint()
+ReadInput()
